@@ -5,14 +5,14 @@ function useSearch(query) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const BASE_URL = "https://tracking.bosta.co/shipments/track/:trackingNumber";
+  const BASE_URL = "https://tracking.bosta.co/shipments/track";
 
   useEffect(() => {
     async function fetchData() {
       try {
         setLoading(true);
         setError("");
-        const res = await fetch(`${BASE_URL}${query}`);
+        const res = await fetch(`${BASE_URL}/${query}`);
 
         if (!res.ok) {
           throw new Error("something went wrong with fetching data");

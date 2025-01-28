@@ -1,13 +1,11 @@
 import SearchIcon from "@mui/icons-material/Search";
 import { Box, TextField, IconButton } from "@mui/material";
 import { useTheme } from "@mui/material";
-import { ColorModeContext, tokens } from "../theme";
-import { useContext } from "react";
+import { tokens } from "../../theme";
 
 const SearchSection = () => {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
-  const colorMode = useContext(ColorModeContext);
 
   return (
     <>

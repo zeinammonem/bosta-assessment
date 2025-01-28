@@ -1,10 +1,10 @@
 import { Box, IconButton } from "@mui/material";
 import { useTheme } from "@mui/material";
-import { ColorModeContext, tokens } from "../theme";
+import { ColorModeContext, tokens } from "../../theme";
 import { useContext } from "react";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
-import LanguageSelector from "./LanguageSelector";
+import LanguageSelector from "../LanguageSelector/LanguageSelector";
 // import { ReactComponent as BostaLogoEnglish } from "../assets/BostaLogoEnglish.svg";
 // import { ReactComponent as BostaLogoArabic } from '../assets/BostaLogoArabic.svg';
 

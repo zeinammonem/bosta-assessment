@@ -1,8 +1,8 @@
 import { Typography } from "@mui/material";
 import { useTheme } from "@mui/material";
-import { tokens } from "../theme";
+import { tokens } from "../../theme";
 
-function Logo() {
+function Header() {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
 
@@ -10,7 +10,7 @@ function Logo() {
     <div>
       <Typography
         variant="h2"
-        color={colors.grey.text}
+        color={colors.black}
         backgroundColor={colors.primary}
         display={"flex"}
         justifyContent={"center"}
@@ -23,4 +23,4 @@ function Logo() {
   );
 }
 
-export default Logo;
+export default Header;
