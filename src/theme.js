@@ -9,14 +9,14 @@ export const tokens = (mode) => ({
           text: "#9e9589",
           dot: "#2f3335",
         },
-        primary: "#0f2a2d",
-        secondary: "#181a1b",
-        // red: "#b6050f", eb2i 8ayarih
+        primary: "#0c1a2e",
+        secondary: "#0c101b",
+        // red: "#D32F2F"
         red: {
           100: "#E30613",
-          200: "#D32F2F",
+          200: "#b6050f",
         },
-        blue: "#59f2ff",
+        blue: "#4cceac",
         black: "#d8d8d3",
       }
     : {
@@ -28,7 +28,7 @@ export const tokens = (mode) => ({
         secondary: "#ffffff",
         red: {
           100: "#E30613",
-          200: "#D32F2F",
+          200: "#b6050f",
         },
         blue: "#0098A5",
         black: "#111619",
