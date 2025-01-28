@@ -1,0 +1,45 @@
+{
+  "bosta_title": "bosta",
+  "tracking": {
+    "title": "Track Your Order",
+    "subtitle": "All order updates will be available through this link.",
+    "placeholder": "Tracking No.",
+    "show_more": "Show More Details",
+    "details": "Tracking details",
+    "mobile_view": "Track your shipment"
+  },
+
+  "order": {
+    "number": "ORDER",
+    "status": {
+      "TICKET_CREATED": {
+        "title": "Order Created",
+        "description": "Your order is created, Bosta will pick it up once your shipper is ready"
+      },
+      "PACKAGE_RECEIVED": {
+        "title": "Package Received",
+        "description": "Order is received at Bosta warehouses and being processed."
+      },
+      "IN_TRANSIT": {
+        "title": "In Transit",
+        "description": "Order is being transferred to Bosta's Hubs."
+      },
+      "OUT_FOR_DELIVERY": {
+        "title": "Out for Delivery",
+        "description": "Order is out for delivery"
+      },
+      "DELIVERED": {
+        "title": "Delivered",
+        "description": "Order is delivered"
+      }
+    },
+    "not_found": "No record of this tracking number can be found at this time, please check the number and try again later. For further assistance, please contact Customer Service."
+  },
+
+  "stepper": {
+    "picked_up": "Picked Up",
+    "processing": "Processing",
+    "out_for_delivery": "Out for Delivery",
+    "delivered": "Delivered"
+  }
+}
