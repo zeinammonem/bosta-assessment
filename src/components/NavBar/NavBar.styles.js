@@ -8,6 +8,9 @@ const NavBarStyles = styled(Box)(({ theme }) => ({
     alignItems: "center",
     padding: theme.spacing(2, 8),
     backgroundColor: theme.palette.primary.main,
+    [theme.breakpoints.down("sm")]: {
+      padding: theme.spacing(2, 1),
+    },
   },
   ".navBarLogo": {
     height: theme.spacing(4),
