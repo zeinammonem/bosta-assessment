@@ -8,9 +8,10 @@ import {
 } from "@mui/material";
 import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { tokens } from "../../theme";
 import { useTranslation } from "react-i18next";
+import { useQuery } from "@tanstack/react-query";
 
 function ShipmentDetails() {
   const theme = useTheme();
@@ -18,7 +19,6 @@ function ShipmentDetails() {
   const { t } = useTranslation();
 
   const [shipment, setShipment] = useState({});
-  const [loading, setLoading] = useState(false);
 
   const steps = [
     t("stepper.picked_up"),
@@ -29,27 +29,48 @@ function ShipmentDetails() {
 
   const { PromisedDate, TrackingNumber = 7234258 } = shipment;
 
-  const BASE_URL = "https://tracking.bosta.co/shipments/track";
-
-  useEffect(() => {
-    async function getShipmentDetails() {
-      setLoading(true);
-      const res = await fetch(`${BASE_URL}/${TrackingNumber}`);
-      const data = await res.json();
-      console.log(data);
-      setShipment(data);
-      setLoading(false);
+  const fetchTrackingDetails = async () => {
+    const response = await fetch("https://tracking.bosta.co/shipments/track/7234258");
+    if (!response.ok) {
+      throw new Error("Network response was not ok");
     }
-    getShipmentDetails();
-  }, [TrackingNumber]);
+    return await response.json();
+  };
+
+  const { data, isLoading, error } = useQuery(
+    ['TrackingNumber'],
+    fetchTrackingDetails
+  );
+
+  if (isLoading) {
+    return (
+      <Typography variant="h6" sx={{ textAlign: "center", marginTop: "20px" }}>
+        Loading tracking details...
+      </Typography>
+    );
+  }
+
+  if (error) {
+    return (
+      <Typography
+        variant="h6"
+        color="error"
+        sx={{ textAlign: "center", marginTop: "20px" }}
+      >
+        Error fetching tracking details.
+      </Typography>
+    );
+  }
+
+  console.log(data);
 
   return (
     <Box
       sx={{
         padding: "20px",
         borderRadius: "8px",
-        backgroundColor: "secondary",
-        boxShadow: 1,
+        backgroundColor: colors.secondary,
+        boxShadow: 2,
         maxWidth: "70%",
         margin: "20px auto",
         marginTop: "0px",

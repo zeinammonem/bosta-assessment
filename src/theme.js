@@ -10,13 +10,13 @@ export const tokens = (mode) => ({
           dot: "#2f3335",
         },
         primary: "#0c1a2e",
-        secondary: "#0c101b",
+        secondary: "#101624",
         // red: "#D32F2F"
         red: {
           100: "#E30613",
           200: "#b6050f",
         },
-        blue: "#4cceac",
+        blue: "#3da58a",
         black: "#d8d8d3",
       }
     : {
