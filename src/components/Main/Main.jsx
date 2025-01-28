@@ -10,8 +10,6 @@ function Main() {
     <div
       style={{
         backgroundColor: colors.secondary,
-        height: "100vh",
-        width: "100vw",
       }}
     >
       <ShipmentDetails />

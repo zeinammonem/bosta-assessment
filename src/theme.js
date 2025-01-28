@@ -5,27 +5,34 @@ import { createTheme } from "@mui/material/styles";
 export const tokens = (mode) => ({
   ...(mode === "dark"
     ? {
-      grey: {
-        text: "#9e9589",
-        dot: "#2f3335",
-      },
-      primary: "#0f2a2d",
-      secondary: "#181a1b",
-      red: "#b6050f",
-      blue: "#59f2ff",
-      black: "#d8d8d3",
-    }
+        grey: {
+          text: "#9e9589",
+          dot: "#2f3335",
+        },
+        primary: "#0f2a2d",
+        secondary: "#181a1b",
+        // red: "#b6050f", eb2i 8ayarih
+        red: {
+          100: "#E30613",
+          200: "#D32F2F",
+        },
+        blue: "#59f2ff",
+        black: "#d8d8d3",
+      }
     : {
-      grey: {
-        text: "#667085",
-        dot: "#D0D5DD",
-      },
-      primary: "#F3FAFB",
-      secondary: "#ffffff",
-      red: "#E30613",
-      blue: "#0098A5",
-      black: "#111619",
-    }),
+        grey: {
+          text: "#667085",
+          dot: "#D0D5DD",
+        },
+        primary: "#F3FAFB",
+        secondary: "#ffffff",
+        red: {
+          100: "#E30613",
+          200: "#D32F2F",
+        },
+        blue: "#0098A5",
+        black: "#111619",
+      }),
 });
 
 // mui theme settings
@@ -36,29 +43,43 @@ export const themeSettings = (mode) => {
       mode: mode,
       ...(mode === "dark"
         ? {
-          // palette values for dark mode
-          primary: {
-            main: colors.primary,
-          },
-          secondary: {
-            main: colors.secondary,
-          },
-          background: {
-            default: colors.primary,
-          },
-        }
+            // palette values for dark mode
+            primary: {
+              main: colors.primary,
+            },
+            secondary: {
+              main: colors.secondary,
+            },
+            background: {
+              default: colors.primary,
+            },
+            red: {
+              main: colors.red[100],
+              dark: colors.red[200],
+            },
+            blue: {
+              main: colors.blue,
+            },
+          }
         : {
-          // palette values for light mode
-          primary: {
-            main: colors.primary,
-          },
-          secondary: {
-            main: colors.secondary,
-          },
-          background: {
-            default: "#ffffff",
-          },
-        }),
+            // palette values for light mode
+            primary: {
+              main: colors.primary,
+            },
+            secondary: {
+              main: colors.secondary,
+            },
+            background: {
+              default: "#ffffff",
+            },
+            red: {
+              main: colors.red[100],
+              dark: colors.red[200],
+            },
+            blue: {
+              main: colors.blue,
+            },
+          }),
     },
     typography: {
       fontFamily: ["Rubik", "sans-serif"].join(","),
@@ -93,11 +114,11 @@ export const themeSettings = (mode) => {
 
 // context for color mode
 export const ColorModeContext = createContext({
-  toggleColorMode: () => { },
+  toggleColorMode: () => {},
 });
 
 export const useMode = () => {
-  const [mode, setMode] = useState("dark");
+  const [mode, setMode] = useState("light");
 
   const colorMode = useMemo(
     () => ({

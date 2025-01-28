@@ -1,10 +1,19 @@
 import { useState } from "react";
-import { Menu, MenuItem, Button } from "@mui/material";
+import { Menu, MenuItem, Button, Typography } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import LanguageSelectorStyles from "./LanguageSelector.styles";
+import { useEffect } from "react";
+import { useTranslation } from "react-i18next";
+
+const locales = {
+  English: "en",
+  عربي: "ar",
+};
 
 const LanguageSelector = () => {
   const [anchorEl, setAnchorEl] = useState(null);
   const [selectedLanguage, setSelectedLanguage] = useState("English");
+  const { i18n } = useTranslation();
 
   const open = Boolean(anchorEl);
 
@@ -19,25 +28,22 @@ const LanguageSelector = () => {
     setAnchorEl(null);
   };
 
+  useEffect(() => {
+    i18n.changeLanguage(locales[selectedLanguage]);
+    document.body.setAttribute("lang", locales[selectedLanguage]);
+  }, [i18n, selectedLanguage]);
+
   return (
-    <span>
+    <LanguageSelectorStyles>
       <Button
         variant="text"
         onClick={handleClick}
         endIcon={<ExpandMoreIcon />}
-        sx={{
-          color: "grey",
-          textTransform: "none",
-          fontWeight: "bold",
-          "&:hover": {
-            color: "red",
-          },
-          "&:active": {
-            color: "darkred",
-          },
-        }}
+        className="languageSelectorButton"
       >
-        {selectedLanguage}
+        <Typography className="languageSelectorText" variant="h5">
+          {selectedLanguage}
+        </Typography>
       </Button>
       <Menu
         anchorEl={anchorEl}
@@ -48,7 +54,7 @@ const LanguageSelector = () => {
         <MenuItem onClick={() => handleClose("English")}>English</MenuItem>
         <MenuItem onClick={() => handleClose("عربي")}>عربي</MenuItem>
       </Menu>
-    </span>
+    </LanguageSelectorStyles>
   );
 };
 

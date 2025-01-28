@@ -5,7 +5,8 @@
     "subtitle": "All order updates will be available through this link.",
     "placeholder": "Tracking No.",
     "show_more": "Show More Details",
-    "Details": "Tracking details"
+    "details": "Tracking details",
+    "mobile_view": "Track your shipment"
   },
 
   "order": {

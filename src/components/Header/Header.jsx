@@ -1,25 +1,28 @@
-import { Typography } from "@mui/material";
-import { useTheme } from "@mui/material";
-import { tokens } from "../../theme";
+import { Box, Typography } from "@mui/material";
+import { useTranslation } from "react-i18next";
+import HeaderStyles from "./Header.styles";
+import pinIcon from "../../assets/Pin.svg";
 
 function Header() {
-  const theme = useTheme();
-  const colors = tokens(theme.palette.mode);
+  const { t } = useTranslation();
 
   return (
-    <div>
-      <Typography
-        variant="h2"
-        color={colors.black}
-        backgroundColor={colors.primary}
-        display={"flex"}
-        justifyContent={"center"}
-        fontWeight="bold"
-        sx={{ m: "0 0 0 0" }}
-      >
-        Track Your Order
-      </Typography>{" "}
-    </div>
+    <HeaderStyles>
+      <Box className="headerContainer">
+        <Box
+          className="headerImage"
+          component="img"
+          src={pinIcon}
+          alt="Pin Icon"
+        />
+        <Typography className="headerTitle" variant="h1">
+          {t("tracking.title")}
+        </Typography>
+        <Typography className="headerSubtitle" variant="h5">
+          {t("tracking.subtitle")}
+        </Typography>
+      </Box>
+    </HeaderStyles>
   );
 }
 
