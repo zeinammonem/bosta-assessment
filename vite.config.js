@@ -13,7 +13,7 @@ export default defineConfig({
       exportAsDefault: false,
     }),
   ],
-  base: "/bosta-assessment/",
+  base: "/bosta-assessment",
   resolve: {
     alias: {
       "@components": path.resolve(__dirname, "./src/components"),

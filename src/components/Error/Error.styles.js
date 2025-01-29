@@ -1,15 +1,13 @@
 import { Box, styled } from "@mui/material";
-
-const ErrorStyles = styled(Box)(() => ({
+const ErrorStyles = styled(Box)(({ theme }) => ({
   ".error": {
-    padding: "20px",
-    borderRadius: "8px",
+    padding: theme.spacing(3),
+    borderRadius: theme.spacing(1),
     display: "flex",
     alignItems: "center",
     maxWidth: "50%",
-    margin: "20px auto",
+    margin: `${theme.spacing(2)} auto`,
     fontSize: "1rem",
   },
 }));
-
 export default ErrorStyles;

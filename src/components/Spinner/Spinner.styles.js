@@ -1,12 +1,10 @@
 import { Box, styled } from "@mui/material";
-
-const SpinnerStyles = styled(Box)(() => ({
+const SpinnerStyles = styled(Box)(({ theme }) => ({
   ".spinner": {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    height: "300px",
+    height: theme.spacing(35),
   },
 }));
-
 export default SpinnerStyles;

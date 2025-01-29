@@ -6,9 +6,18 @@ import {
 } from "./SearchBar.styles";
 import { SearchOutlined } from "@mui/icons-material";
 import { useTranslation } from "react-i18next";
+import { useState } from "react";
 
-const SearchSection = () => {
+const SearchSection = ({ setTrackingNumber }) => {
   const { t } = useTranslation();
+
+  const [inputValue, setInputValue] = useState(null);
+
+  const handleClick = () => {
+    if (inputValue) {
+      setTrackingNumber(inputValue);
+    }
+  };
 
   return (
     <SearchBarContainer>
@@ -17,6 +26,7 @@ const SearchSection = () => {
           fullWidth
           variant="outlined"
           placeholder={t("tracking.placeholder")}
+          onChange={(e) => setInputValue(e.target.value)}
           sx={{
             "& .MuiOutlinedInput-root": {
               border: "none",
@@ -27,7 +37,7 @@ const SearchSection = () => {
             },
           }}
         />
-        <SearchButton>
+        <SearchButton onClick={handleClick}>
           <SearchOutlined />
         </SearchButton>
       </SearchBarStyles>

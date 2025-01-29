@@ -1,6 +1,5 @@
 import { Box, CircularProgress } from "@mui/material";
 import SpinnerStyles from "./Spinner.styles";
-
 function Spinner() {
   return (
     <SpinnerStyles>
@@ -10,5 +9,4 @@ function Spinner() {
     </SpinnerStyles>
   );
 }
-
 export default Spinner;
