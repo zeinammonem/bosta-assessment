@@ -31,6 +31,14 @@
       "DELIVERED": {
         "title": "Delivered",
         "description": "Order is delivered"
+      },
+      "WAITING_FOR_CUSTOMER_ACTION": {
+        "title": "Waiting for Customer Action",
+        "description": "Order is waiting for customer action"
+      },
+      "NOT_YET_SHIPPED": {
+        "title": "Not Yet Shipped",
+        "description": "Order is not yet shipped"
       }
     },
     "not_found": "No record of this tracking number can be found at this time, please check the number and try again later. For further assistance, please contact Customer Service."
