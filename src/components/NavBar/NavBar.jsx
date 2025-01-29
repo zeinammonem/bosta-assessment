@@ -47,7 +47,7 @@ function NavBar() {
 
   //TODO search component in a modal
   return (
-    <AppBar position="static">
+    <AppBar position="sticky" elevation={0}>
       <NavBarStyles>
         <Box className="navBarContainer">
           <Box
