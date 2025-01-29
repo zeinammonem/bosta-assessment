@@ -5,7 +5,6 @@ import { useContext } from "react";
 import LightModeOutlinedIcon from "@mui/icons-material/LightModeOutlined";
 import DarkModeOutlinedIcon from "@mui/icons-material/DarkModeOutlined";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
-import { useMediaQuery } from "@mui/material";
 import LanguageSelector from "../LanguageSelector/LanguageSelector";
 import AppBar from "@mui/material/AppBar";
 import NavBarStyles from "./NavBar.styles";
@@ -15,14 +14,13 @@ import SearchBar from "../SearchBar/SearchBar";
 import bostaLogoEn from "../../assets/BostaLogoEnglish.svg";
 import bostaLogoAr from "../../assets/BostaLogoArabic.svg";
 
-function NavBar() {
+function NavBar({ isMobileView, setTrackingNumber }) {
   const theme = useTheme();
   const colorMode = useContext(ColorModeContext);
   const [logo, setLogo] = useState(bostaLogoEn);
   const { t, i18n } = useTranslation();
 
   const [anchorEl, setAnchorEl] = useState(null);
-  const isMobileView = useMediaQuery(theme.breakpoints.down("sm"));
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -47,7 +45,7 @@ function NavBar() {
 
   //TODO search component in a modal
   return (
-    <AppBar position="static">
+    <AppBar position="sticky" elevation={0}>
       <NavBarStyles>
         <Box className="navBarContainer">
           <Box
@@ -102,7 +100,7 @@ function NavBar() {
         >
           <Typography variant="h6">{t("tracking.mobile_view")}</Typography>
           <Box display="flex">
-            <SearchBar />
+            <SearchBar setTrackingNumber={setTrackingNumber} />
           </Box>
         </Box>
       </Popover>

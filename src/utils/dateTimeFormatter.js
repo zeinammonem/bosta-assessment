@@ -12,11 +12,14 @@ export const formatDate = (
   shortenMonth = false,
   includeYear = false
 ) => {
-  // Base format: Full weekday, day, and full month
+  if (!date) {
+    return null;
+  }
+
   let formatString = "EEEE, d MMMM";
 
   // Adjust format string to shorten the month if needed
-  if (shortenMonth) {
+  if (shortenMonth && locale !== "ar") {
     formatString = "EEEE, d MMM.";
   }
 
@@ -24,8 +27,10 @@ export const formatDate = (
   if (includeYear) {
     formatString += " yyyy";
   }
-
-  return format(date, formatString, { locale: locales[locale] || locales.en });
+  // Base format: Full weekday, day, and full month
+  return format(date, formatString, {
+    locale: locales[locale] || locales.en,
+  });
 };
 
 export const formatTime = (date, locale) => {
@@ -37,4 +42,3 @@ export const formatTime = (date, locale) => {
   }
   return formattedTime;
 };
-
