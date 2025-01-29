@@ -4,7 +4,10 @@ import ErrorStyles from "./Error.styles";
 function Error() {
   return (
     <ErrorStyles>
-      <Alert className="error" severity="error">
+      <Alert
+        className="error"
+        severity="error"
+      >
         Error fetching shipment details.
       </Alert>
     </ErrorStyles>

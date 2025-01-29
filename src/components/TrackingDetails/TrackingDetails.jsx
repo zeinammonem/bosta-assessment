@@ -12,7 +12,7 @@ import { useState } from "react";
 import { tokens } from "../../theme";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
-import Spinner from "../Spinner";
+import Spinner from "../Spinner/Spinner";
 import Error from "../Error/Error";
 
 function TrackingDetails() {
