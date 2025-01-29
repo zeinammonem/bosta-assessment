@@ -12,6 +12,8 @@ import { useState } from "react";
 import { tokens } from "../../theme";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
+import Error from "../Error/Error";
+import Spinner from "../Spinner/Spinner";
 
 function ShipmentDetails() {
   const theme = useTheme();
@@ -30,7 +32,9 @@ function ShipmentDetails() {
   const { PromisedDate, TrackingNumber = 7234258 } = shipment;
 
   const fetchTrackingDetails = async () => {
-    const response = await fetch("https://tracking.bosta.co/shipments/track/7234258");
+    const response = await fetch(
+      "https://tracking.bosta.co/shipments/track/7234258"
+    );
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -38,31 +42,17 @@ function ShipmentDetails() {
   };
 
   const { data, isLoading, error } = useQuery(
-    ['TrackingNumber'],
+    ["TrackingNumber"],
     fetchTrackingDetails
   );
 
   if (isLoading) {
-    return (
-      <Typography variant="h6" sx={{ textAlign: "center", marginTop: "20px" }}>
-        Loading tracking details...
-      </Typography>
-    );
+    return <Spinner />;
   }
 
   if (error) {
-    return (
-      <Typography
-        variant="h6"
-        color="error"
-        sx={{ textAlign: "center", marginTop: "20px" }}
-      >
-        Error fetching tracking details.
-      </Typography>
-    );
+    return <Error />;
   }
-
-  console.log(data);
 
   return (
     <Box

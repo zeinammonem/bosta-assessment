@@ -3,7 +3,6 @@ import {
   Paper,
   Step,
   StepConnector,
-  StepContent,
   StepLabel,
   Stepper,
   Typography,
@@ -13,42 +12,46 @@ import { useState } from "react";
 import { tokens } from "../../theme";
 import { useTranslation } from "react-i18next";
 import { useQuery } from "@tanstack/react-query";
+import Spinner from "../Spinner";
+import Error from "../Error/Error";
 
 function TrackingDetails() {
   const theme = useTheme();
   const colors = tokens(theme.palette.mode);
   const { t } = useTranslation();
-    const [activeStep, setActiveStep] = useState(2); // Set this dynamically based on tracking status
+  const [activeStep, setActiveStep] = useState(2); // Set this dynamically based on tracking status
 
-    const steps = [
-      {
-        label: "Shipment Created", // replace with date
-        description:
-          "We have received your order and it is being prepared for shipment.",
-      },
-      {
-        label: "Picked Up",
-        description:
-          "Your package has been picked up by the courier and is on its way.",
-      },
-      {
-        label: "In Transit",
-        description:
-          "Your package is on the move and heading towards your destination.",
-      },
-      {
-        label: "Out for Delivery",
-        description: "The courier is out for delivery and will reach you soon.",
-      },
-      {
-        label: "Delivered",
-        description:
-          "Your package has been delivered. Thank you for choosing us!",
-      },
-    ];
+  const steps = [
+    {
+      label: "Shipment Created", // replace with date
+      description:
+        "We have received your order and it is being prepared for shipment.",
+    },
+    {
+      label: "Picked Up",
+      description:
+        "Your package has been picked up by the courier and is on its way.",
+    },
+    {
+      label: "In Transit",
+      description:
+        "Your package is on the move and heading towards your destination.",
+    },
+    {
+      label: "Out for Delivery",
+      description: "The courier is out for delivery and will reach you soon.",
+    },
+    {
+      label: "Delivered",
+      description:
+        "Your package has been delivered. Thank you for choosing us!",
+    },
+  ];
 
   const fetchTrackingDetails = async () => {
-    const response = await fetch("https://tracking.bosta.co/shipments/track/7234258");
+    const response = await fetch(
+      "https://tracking.bosta.co/shipments/track/7234258"
+    );
     if (!response.ok) {
       throw new Error("Network response was not ok");
     }
@@ -56,39 +59,25 @@ function TrackingDetails() {
   };
 
   const { data, isLoading, error } = useQuery(
-    ['TrackingNumber'],
+    ["TrackingNumber"],
     fetchTrackingDetails
   );
 
   if (isLoading) {
-    return (
-      <Typography variant="h6" sx={{ textAlign: "center", marginTop: "20px" }}>
-        Loading tracking details...
-      </Typography>
-    );
+    return <Spinner />;
   }
 
   if (error) {
-    return (
-      <Typography
-        variant="h6"
-        color="error"
-        sx={{ textAlign: "center", marginTop: "20px" }}
-      >
-        Error fetching tracking details.
-      </Typography>
-    );
+    return <Error />;
   }
 
-  console.log(data);
+  //   const steps = data?.TransitEvents?.map((event) => ({
+  //     label: event.state,
+  //     description: event.reason,
+  //   }));
 
-//   const steps = data?.TransitEvents?.map((event) => ({
-//     label: event.state,
-//     description: event.reason,
-//   }));
-
-//   const activeStep =
-//     steps?.findIndex((step) => step.label === data?.CurrentStatus?.state) || 0;
+  //   const activeStep =
+  //     steps?.findIndex((step) => step.label === data?.CurrentStatus?.state) || 0;
 
   return (
     <Box
@@ -150,11 +139,9 @@ function TrackingDetails() {
                 borderColor: "grey.300",
               }}
             >
-              {/* <StepContent> */}
               <Typography variant="body2" color="text.secondary">
                 {step.description}
               </Typography>
-              {/* </StepContent> */}
             </Box>
           </Step>
         ))}

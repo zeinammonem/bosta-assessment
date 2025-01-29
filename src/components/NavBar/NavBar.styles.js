@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 
 const NavBarStyles = styled(Box)(({ theme }) => ({
   ".navBarContainer": {
+    position: "sticky !important",
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
