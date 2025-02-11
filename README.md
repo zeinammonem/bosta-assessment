@@ -17,7 +17,7 @@
 ### Clone the Repository
 
 ```sh
-git clone https://github.com/zeinammonem/bosta-assessment.git
+git clone https://github.com/zeinammonem/bosta-clone.git
 ```
 
 ### Install Dependencies
