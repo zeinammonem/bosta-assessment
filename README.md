@@ -1,4 +1,4 @@
-## Bosta Shipment Tracking App Frontend Assessment
+## Bosta Shipment Tracking App
 
 ---
 
@@ -33,4 +33,10 @@ npm run dev
 ```
 
 The app should be running on **[http://localhost:5173/](http://localhost:5173/)**.
+
+---
+
+## Live Demo
+
+**[Bosta Shipment Tracking App](https://zeinammonem.github.io/bosta-assessment/)**
 
