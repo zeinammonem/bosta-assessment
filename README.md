@@ -38,5 +38,5 @@ The app should be running on **[http://localhost:5173/](http://localhost:5173/)*
 
 ## Live Demo
 
-**[Bosta Shipment Tracking App](https://zeinammonem.github.io/bosta-assessment/)**
+**[Bosta Shipment Tracking App](https://zeinammonem.github.io/bosta-clone)**
 
