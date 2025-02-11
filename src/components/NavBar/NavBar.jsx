@@ -23,7 +23,7 @@ function NavBar({ isMobileView, setTrackingNumber }) {
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+    setAnchorEl(event.currentTarget); 
   };
 
   const handleClose = () => {
